@@ -1,4 +1,4 @@
-#include<stdlib.h>
+#include "libft.h"
 size_t	ft_strlen(const char *s)
 {
 	size_t	len;
@@ -9,7 +9,7 @@ size_t	ft_strlen(const char *s)
 	return (len);
 
 }
-#include<stdio.h>
+/*#include<stdio.h>
 #include<string.h>
 int	main(void)
 {
@@ -18,5 +18,4 @@ int	main(void)
 	printf("%zu\n", ft_strlen(""));
 	printf("%zu\n", strlen(""));
 	return (0);
-}
-
+}*/

@@ -5,7 +5,7 @@ int	ft_isascii(int c)
 	else
 		return (0);
 }
-#include<stdio.h>
+/*#include<stdio.h>
 #include<ctype.h>
 int	main(void)
 {
@@ -18,4 +18,4 @@ int	main(void)
 	printf("%d\n",'ü');
 	printf("%d\n",ft_isascii(128));
 	printf("%d\n",isascii(128));
-}
+}*/

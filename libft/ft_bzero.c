@@ -1,13 +1,13 @@
-#include<stdlib.h>
+#include "libft.h"
 void	ft_bzero(void *s, size_t n)
 {
 	unsigned char *p;
-	
+
 	p = s;
 	while (n--)
 		*(p++) = 0;
 }
-#include<stdio.h>
+/*#include<stdio.h>
 #include<string.h>
 int	main(void)
 {
@@ -19,5 +19,5 @@ int	main(void)
 	printf("%s\n",name1);
 	printf("%s\n",name+5);
 	printf("%s\n",name1+5);
-        return (0);	
-}
+        return (0);
+}*/
