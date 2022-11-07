@@ -15,7 +15,6 @@ static int	ft_itoa_len(int n)
 }
 char	*ft_itoa(int n)
 {
-	int	i;
 	int	len;
 	long	num;
 	char *nb;

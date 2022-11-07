@@ -30,11 +30,9 @@ static int	ft_strlen_sep(char const *str, char c)
 
 static char	*ft_print_word(char const *str, char c)
 {
-	int		i;
 	int		lenstr;
 	char	*array;
 
-	i = 0;
 	lenstr = ft_strlen_sep(str, c);
 	array = (char *)malloc((lenstr + 1) * sizeof(char));
 	ft_strlcpy(array, str, lenstr + 1);
@@ -54,14 +52,14 @@ char	**ft_split(char const *s, char c)
 	array = (char **)malloc((count + 1) * sizeof(char *));
 	while (s[i] && j < count)
 	{
-		while (s[i] && str[i] == c)
+		while (s[i] && s[i] == c)
 			i++;
 		if (s[i])
 		{
 			array[j] = ft_print_word((s + i), c);
 			j++;
 		}
-		while (s[i] && str[i] != c)
+		while (s[i] && s[i] != c)
 			i++;
 	}
 	array[j] = 0;
