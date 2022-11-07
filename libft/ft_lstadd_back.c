@@ -1,4 +1,17 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: fvalli-v <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/11/07 11:56:24 by fvalli-v          #+#    #+#             */
+/*   Updated: 2022/11/07 11:57:36 by fvalli-v         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
+
 void	ft_lstadd_back(t_list **lst, t_list *new)
 {
 	t_list	*temp;
@@ -45,7 +58,8 @@ int	main(void)
 	//print the size of the list
 	printf("length of the list is:%d\n", ft_lstsize(head));
 
-	// add new element in the begining of the list and update temp
+	// add new element in the begining 
+	// of the list and update temp
 	ft_lstadd_front(&head, newdata);
 	ft_lstadd_front(&head, ft_lstnew(&num3));
 	ft_lstadd_back(&head, ft_lstnew(&num4));
@@ -64,6 +78,7 @@ int	main(void)
 	printf("length of the list is:%d\n", ft_lstsize(head));
 
 	// print the data from the last element of the list
-	printf("the data from the last element is:%d \n", *(int *)(ft_lstlast(head)->content));
+	printf("the data from the last element is:%d \n", 
+ *(int *)(ft_lstlast(head)->content));
 	return (0);
 }*/

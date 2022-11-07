@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: fvalli-v <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/11/07 11:41:04 by fvalli-v          #+#    #+#             */
+/*   Updated: 2022/11/07 11:43:02 by fvalli-v         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 static int	ft_isspace(const char *str, int *i)
 {
 	int	sign;
@@ -8,7 +20,7 @@ static int	ft_isspace(const char *str, int *i)
 	if (str[*i] == '+' || str[*i] == '-')
 	{
 		if (str[*i] == '-')
-			sign*=-1;
+			sign *= -1;
 		(*i)++;
 	}
 	return (sign);
@@ -28,8 +40,7 @@ int	ft_atoi(const char *nptr)
 		res = res * 10 + (nptr[i] - 48);
 		i++;
 	}
-	return (sign*res);
-
+	return (sign * res);
 }
 /*#include<stdio.h>
 #include<stdlib.h>

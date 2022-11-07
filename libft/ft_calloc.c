@@ -1,13 +1,25 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: fvalli-v <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/11/07 11:44:55 by fvalli-v          #+#    #+#             */
+/*   Updated: 2022/11/07 11:46:32 by fvalli-v         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
+
 void	*ft_calloc(size_t nmemb, size_t size)
 {
-	void *p;
+	void	*p;
 
-	p = (void *)malloc(nmemb * size); // On error,malloc and calloc functions return NULL
-	//If size is 0,then malloc() returns either NULL
+	p = (void *)malloc(nmemb * size);
 	if (p == NULL)
 		return (p);
-	ft_bzero(p, nmemb * size); // The  memory  is  set to zero
+	ft_bzero(p, nmemb * size);
 	return (p);
 }
 /*#include <stdio.h>

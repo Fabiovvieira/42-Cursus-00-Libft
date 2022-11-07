@@ -1,6 +1,6 @@
-CC = cc
-
 NAME = libft.a
+
+CC = cc
 
 CC_FLAGS = -Wall -Wextra -Werror
 
@@ -50,18 +50,21 @@ OBJECTS_BONUS = $(SOURCES_BONUS:.c=.o)
 
 all: ${NAME}
 
+$(NAME): ${OBJECTS_MANDATORY}
+	${LIBSTATIC} $@ $^
+
 %.o : %.c
 	${CC} ${CC_FLAGS} -c $< -o $@
 
-${NAME}: ${OBJECTS_MANDATORY}
-	${LIBSTATIC} $@ $^
+bonus: ${OBJECTS_BONUS} ${OBJECTS_MANDATORY}
+	${LIBSTATIC} ${NAME} $^
 
 re: fclean all
 
 clean:
-	rm -f ${OBJECTS_MANDATORY}
+	rm -f ${OBJECTS_MANDATORY} ${OBJECTS_BONUS}
 
 fclean: clean
 	rm -f ${NAME}
 
-.PHONY: all clean fclean re
+.PHONY: all bonus clean fclean re

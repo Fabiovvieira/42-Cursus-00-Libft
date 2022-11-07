@@ -1,5 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: fvalli-v <fvalli-v@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/11/07 12:36:05 by fvalli-v          #+#    #+#             */
+/*   Updated: 2022/11/07 12:36:05 by fvalli-v         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
-static int	is_set(char	c, char const *set)
+
+static int	is_set(char c, char const *set)
 {
 	int	i;
 
@@ -12,6 +25,7 @@ static int	is_set(char	c, char const *set)
 	}
 	return (0);
 }
+
 static int	begin_index(char const *s1, char const *set)
 {
 	int	i;
@@ -19,12 +33,13 @@ static int	begin_index(char const *s1, char const *set)
 	i = 0;
 	while (s1[i])
 	{
-		if (!(is_set(s1[i], set)))
-			break;
+		if (!(is_set (s1[i], set)))
+			break ;
 		i++;
 	}
 	return (i);
 }
+
 static int	end_index(char const *s1, char const *set)
 {
 	int	i;
@@ -33,32 +48,39 @@ static int	end_index(char const *s1, char const *set)
 	while (i >= 0)
 	{
 		if (!(is_set(s1[i], set)))
-			break;
+			break ;
 		i--;
 	}
 	return (i);
 }
+
 char	*ft_strtrim(char const *s1, char const *set)
 {
-	int	begin;
-	int	end;
+	int		begin;
+	int		end;
 	char	*res;
+
 	if (!(*s1))
 		return (0);
 	if (!(*set))
 		return ((char *)s1);
 	begin = begin_index(s1, set);
 	end = end_index(s1, set);
-	res = (char *)malloc((end - begin + 1) * sizeof(char));
+	if (end < begin)
+	{
+		res = ft_strdup("");
+		return (res);
+	}
+	else
+		res = (char *)malloc((end - begin + 1) * sizeof(char));
 	if (!res)
 		return (0);
-	ft_strlcpy(res, s1 + begin, end - begin + 2); //strlcpy consider /0 part of the length
+	ft_strlcpy(res, s1 + begin, end - begin + 2);
 	return (res);
 }
 /*#include <stdio.h>
-int	main(int argc, char **argv)
+int	main(void)
 {
-	if (argc == 3)
-		printf("Original string :%s\nSet of char:%s\nTrimmed string:%s\n", argv[1], argv[2], ft_strtrim(argv[1], argv[2]));
-	return (0);
+	printf("Original string :%s\nSet of char:%s\nTrimmed string:%s\n",
+	"          ", "\t \n", ft_strtrim("          ", "\t \n"));
 }*/

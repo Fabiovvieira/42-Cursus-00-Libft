@@ -1,4 +1,17 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: fvalli-v <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/11/07 11:52:32 by fvalli-v          #+#    #+#             */
+/*   Updated: 2022/11/07 11:55:18 by fvalli-v         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
+
 static int	ft_itoa_len(int n)
 {
 	int	len;
@@ -13,11 +26,12 @@ static int	ft_itoa_len(int n)
 	}
 	return (len);
 }
+
 char	*ft_itoa(int n)
 {
-	int	len;
+	int		len;
 	long	num;
-	char *nb;
+	char	*nb;
 
 	num = n;
 	len = ft_itoa_len(num);
@@ -44,7 +58,8 @@ char	*ft_itoa(int n)
 int	main(void)
 {
 	printf("num =%d | string =%s\n", ft_itoa_len(0), ft_itoa(0));
-	printf("num =%d | string =%s\n", ft_itoa_len(-2147483648), ft_itoa(-2147483648));
+	printf("num =%d | string =%s\n", ft_itoa_len(-2147483648), 
+	ft_itoa(-2147483648));
 	printf("num =%d | string =%s\n", ft_itoa_len(2147483647), ft_itoa(2147483647));
 	printf("num =%d | string =%s\n", ft_itoa_len(-21474), ft_itoa(-21474));
 	printf("num =%d | string =%s\n", ft_itoa_len(21474), ft_itoa(21474));
