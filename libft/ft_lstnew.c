@@ -27,11 +27,15 @@ t_list	*ft_lstnew(void *content)
 int	main(void)
 {
 	t_list	*new;
-	int	num = 10;
+	int	*numnew;
 
-	new = ft_lstnew(&num);
+	numnew = malloc(sizeof(int));
+	*numnew = 10;
+
+	new = ft_lstnew(numnew);
 	printf("content is :%d\n", *(int *)(new->content));
 	printf("next is :%p\n", new->next);
+	free(new->content);
 	// printf("content is :%d", ((int *)(new->content))[0]);
 	return (0);
 }*/

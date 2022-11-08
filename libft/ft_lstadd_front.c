@@ -28,15 +28,19 @@ int	main(void)
 	t_list	*new1;
 	t_list	*new2;
 	t_list	*newdata;
-	int	num0 = 1;
-	int	num1 = 10;
-	int	num2 = 11;
-	int	numdata = 30;
+	int	*num0 = malloc(sizeof(int));
+	int	*num1 = malloc(sizeof(int));
+	int	*num2 = malloc(sizeof(int));
+	int	*numdata = malloc(sizeof(int));
+	*num0 = 1;
+	*num1 = 10;
+	*num2 = 11;
+	*numdata  = 30;
 
-	head = ft_lstnew(&num0);
-	new1 = ft_lstnew(&num1);
-	new2 = ft_lstnew(&num2);
-	newdata = ft_lstnew(&numdata);
+	head = ft_lstnew(num0);
+	new1 = ft_lstnew(num1);
+	new2 = ft_lstnew(num2);
+	newdata = ft_lstnew(numdata);
 	head->next = new1;
 	new1->next = new2;
 	temp = head;
