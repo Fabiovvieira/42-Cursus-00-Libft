@@ -31,7 +31,6 @@ int	main(void)
 
 	numnew = malloc(sizeof(int));
 	*numnew = 10;
-
 	new = ft_lstnew(numnew);
 	printf("content is :%d\n", *(int *)(new->content));
 	printf("next is :%p\n", new->next);
