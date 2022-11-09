@@ -12,75 +12,31 @@
 
 #include "libft.h"
 
-static int	is_set(char c, char const *set)
-{
-	int	i;
-
-	i = 0;
-	while (set[i])
-	{
-		if (set[i] == c)
-			return (1);
-		i++;
-	}
-	return (0);
-}
-
-static int	begin_index(char const *s1, char const *set)
-{
-	int	i;
-
-	i = 0;
-	while (s1[i])
-	{
-		if (!(is_set (s1[i], set)))
-			break ;
-		i++;
-	}
-	return (i);
-}
-
-static int	end_index(char const *s1, char const *set)
-{
-	int	i;
-
-	i = ft_strlen(s1) - 1;
-	while (i >= 0)
-	{
-		if (!(is_set(s1[i], set)))
-			break ;
-		i--;
-	}
-	return (i);
-}
-
 char	*ft_strtrim(char const *s1, char const *set)
 {
-	int		begin;
-	int		end;
 	char	*res;
+	size_t	begin;
+	size_t	end;
 
-	if (!(*s1))
-		return (0);
-	if (!(*set))
-		return ((char *)s1);
-	begin = begin_index(s1, set);
-	end = end_index(s1, set);
-	if (end < begin)
-	{
-		res = ft_strdup("");
-		return (res);
-	}
-	else
-		res = (char *)malloc((end - begin + 1) * sizeof(char));
-	if (!res)
-		return (0);
-	ft_strlcpy(res, s1 + begin, end - begin + 2);
+	if (!s1)
+		return (NULL);
+	if (!set)
+		return (ft_strdup(s1));
+	end = ft_strlen(s1) - 1;
+	begin = 0;
+	while (s1[begin] && ft_strchr(set, s1[begin]))
+		++begin;
+	while (s1[end] && ft_strchr(set, s1[end]))
+		--end;
+	res = ft_substr(s1, begin, end - begin + 1);
 	return (res);
 }
 /*#include <stdio.h>
 int	main(void)
 {
 	printf("Original string :%s\nSet of char:%s\nTrimmed string:%s\n",
-	"          ", "\t \n", ft_strtrim("          ", "\t \n"));
+	"\t   \n\n\n  \n\n\t    Hello \t  Please\n Trim me !\t\t\t\n
+	\t\t\t\t  ", "Hello \t  Please\n Trim me !", ft_strtrim("\t
+	 \n\n\n  \n\n\t    Hello \t  Please\n Trim me !\t\t\t\n
+	 \t\t\t\t  ", "Hello \t  Please\n Trim me !"));
 }*/

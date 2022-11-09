@@ -1,29 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstclear.c                                      :+:      :+:    :+:   */
+/*   ft_lstdelone_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: fvalli-v <fvalli-v@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/07 13:30:07 by fvalli-v          #+#    #+#             */
-/*   Updated: 2022/11/08 20:23:13 by marvin           ###   ########.fr       */
+/*   Created: 2022/11/07 12:05:29 by fvalli-v          #+#    #+#             */
+/*   Updated: 2022/11/09 09:00:54 by fvalli-v         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstclear(t_list **lst, void (*del)(void*))
+void	ft_lstdelone(t_list *lst, void (*del)(void*))
 {
-	t_list	*next;
-
-	if (*lst != NULL && del != NULL)
+	if (lst != NULL && del != NULL)
 	{
-		while (*lst)
-		{
-			next = (*lst)->next;
-			ft_lstdelone(*lst, del);
-			*lst = next;
-		}
+		del(lst->content);
+		free (lst);
 	}
 }
 /*static void	ft_delete(void	*data)
@@ -40,7 +34,6 @@ int	main(void)
 	t_list	*new2;
 	t_list	*new3;
 	t_list	*new5;
-	t_list	*newdel;
 	t_list	*newdata;
 	int	*num0 = malloc(sizeof(int));
 	int	*num1 = malloc(sizeof(int));
@@ -50,7 +43,6 @@ int	main(void)
 	int	*num5 = malloc(sizeof(int));
 	int	*num6 = malloc(sizeof(int));
 	int	*numdata = malloc(sizeof(int));
-	int	*numdel = malloc(sizeof(int));
 	*num0 = 1;
 	*num1 = 10;
 	*num2 = 11;
@@ -59,14 +51,12 @@ int	main(void)
 	*num5 = 166;
 	*num6 = 200;
 	*numdata  = 30;
-	*numdel = 16;
 
 	new3 = ft_lstnew(num6);
 	head = ft_lstnew(num0);
 	new1 = ft_lstnew(num1);
 	new2 = ft_lstnew(num2);
 	new5 = ft_lstnew(num5);
-	newdel = ft_lstnew(numdel);
 	newdata = ft_lstnew(numdata);
 	head->next = new1;
 	new1->next = new2;
@@ -104,12 +94,8 @@ int	main(void)
 	*(int *)(ft_lstlast(head)->content));
 
 	// free a content's node from a list
-	printf("the content to be freed is:%d\n", *(int *)(newdel->content));
-	ft_lstdelone(newdel, &ft_delete);
-
-	// clear - Deletes and frees all the list
-	ft_lstclear(&head, &ft_delete);
-	printf("the head is:%p. It should be NULL.\n", head);
+	printf("the content to be freed is:%d\n", *(int *)(new2->content));
+	ft_lstdelone(new2, &ft_delete);
 
 	return (0);
 }*/

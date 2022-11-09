@@ -52,17 +52,13 @@ static char	*ft_print_word(char const *str, char c)
 	return (array);
 }
 
-char	**ft_split(char const *s, char c)
+static char	**ft_allocate(char **array, char const *s, int count, char c)
 {
 	int		i;
 	int		j;
-	char	**array;
-	int		count;
 
 	i = 0;
 	j = 0;
-	count = ft_strcount(s, c);
-	array = (char **)malloc((count + 1) * sizeof(char *));
 	while (s[i] && j < count)
 	{
 		while (s[i] && s[i] == c)
@@ -76,6 +72,21 @@ char	**ft_split(char const *s, char c)
 			i++;
 	}
 	array[j] = 0;
+	return (array);
+}
+
+char	**ft_split(char const *s, char c)
+{
+	char	**array;
+	int		count;
+
+	if (!s)
+		return (NULL);
+	count = ft_strcount(s, c);
+	array = (char **)malloc((count + 1) * sizeof(char *));
+	if (!array)
+		return (NULL);
+	array = ft_allocate(array, s, count, c);
 	return (array);
 }
 /*#include<stdio.h>

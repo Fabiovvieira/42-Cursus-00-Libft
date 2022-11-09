@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fvalli-v <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: fvalli-v <fvalli-v@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 12:12:19 by fvalli-v          #+#    #+#             */
-/*   Updated: 2022/11/07 12:13:35 by fvalli-v         ###   ########.fr       */
+/*   Updated: 2022/11/09 09:36:49 by fvalli-v         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,13 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 	size_t	i;
 
 	i = 0;
-	while (n--)
+	if (dest || src)
 	{
-		((unsigned char *)dest)[i] = ((unsigned char *)src)[i];
-		i++;
+		while (n--)
+		{
+			((unsigned char *)dest)[i] = ((unsigned char *)src)[i];
+			i++;
+		}
 	}
 	return (dest);
 }
@@ -40,7 +43,7 @@ int     main(void)
         memcpy(src22+5, src22, 5);
         printf("%s\n", dest);
         printf("%s\n", dest1);
-	printf("%s\n", src2); //nesse caso o dado do 
+	printf("%s\n", src2); //nesse caso o dado do
 	//src se altera ja q as memorias se sobrepoem
         printf("%s\n", src22);
         return (0);

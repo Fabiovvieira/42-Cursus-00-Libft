@@ -18,6 +18,8 @@ size_t	ft_strlcat(char *dst, const char *src, size_t size)
 	size_t	sizedest;
 	size_t	sizesrc;
 
+	if (dst == NULL && size == 0)
+		return (0);
 	sizedest = ft_strlen(dst);
 	sizesrc = ft_strlen(src);
 	i = 0;
@@ -35,11 +37,11 @@ size_t	ft_strlcat(char *dst, const char *src, size_t size)
 int main(void)
 {
     char leftStr[20] = "123456789";
-    unsigned int n=25;
+    unsigned int n=0;
     char rightStr[] = "12345";
     unsigned int n1;
-
-    n1 = ft_strlcat(leftStr, rightStr,n);
+	//test leftStr with NULL and n = 0
+    n1 = ft_strlcat(NULL, rightStr,n);
     printf("%d\n" , n1);
     printf("%s\n" , leftStr);
 
