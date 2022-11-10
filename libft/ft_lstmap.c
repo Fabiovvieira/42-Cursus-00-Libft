@@ -18,15 +18,21 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 	t_list	*new;
 	int		size;
 
-	(void)del;
 	size = ft_lstsize(lst);
 	if (size == 0)
 		return (0);
 	temp = ft_lstnew(f(lst->content));
+	if (!temp)
+		return (NULL);
 	lst = lst->next;
 	while (lst)
 	{
 		new = ft_lstnew(f(lst->content));
+		if (!new)
+		{
+			ft_lstclear(&temp, del);
+			return (NULL);
+		}
 		ft_lstadd_back(&temp, new);
 		lst = lst->next;
 	}
@@ -115,7 +121,7 @@ int	main(void)
 	printf("\n");
 
 	//print the size of the list
-	printf("length of the list is:%d\n",(*) ft_lstsize(head));
+	printf("length of the list is:%d\n", ft_lstsize(head));
 
 	// print the data from the last element of the list
 	printf("the data from the last element is:%d \n",

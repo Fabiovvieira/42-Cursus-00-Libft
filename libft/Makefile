@@ -2,9 +2,7 @@ NAME = libft.a
 
 CC = cc
 
-CC_FLAGS = -Wall -Wextra -Werror
-
-LIBSTATIC = ar -rcs
+CFLAGS = -Wall -Wextra -Werror
 
 SOURCES_MANDATORY = ft_isalnum.c \
 		ft_isalpha.c \
@@ -42,29 +40,32 @@ SOURCES_MANDATORY = ft_isalnum.c \
 		ft_putnbr_fd.c
 
 
-SOURCES_BONUS = $(wildcard ft_lst*.c)
+SOURCES_BONUS = ft_lstnew.c \
+		ft_lstadd_front.c \
+		ft_lstsize.c \
+		ft_lstlast.c \
+		ft_lstadd_back.c \
+		ft_lstdelone.c \
+		ft_lstclear.c \
+		ft_lstiter.c \
+		ft_lstmap.c \
 
 OBJECTS_MANDATORY = $(SOURCES_MANDATORY:.c=.o)
 
 OBJECTS_BONUS = $(SOURCES_BONUS:.c=.o)
 
-all: ${NAME}
+all: $(NAME)
 
-$(NAME): ${OBJECTS_MANDATORY}
-	${LIBSTATIC} $@ $^
+$(NAME): $(OBJECTS_MANDATORY)
+	ar rc $(NAME) $(OBJECTS_MANDATORY)
 
-%.o : %.c
-	${CC} ${CC_FLAGS} -c $< -o $@
-
-bonus: ${OBJECTS_BONUS} ${OBJECTS_MANDATORY}
-	${LIBSTATIC} ${NAME} $^
-
-re: fclean all
+bonus: $(OBJECTS_MANDATORY) $(OBJECTS_BONUS)
+	ar rc $(NAME) $(OBJECTS_MANDATORY) $(OBJECTS_BONUS)
 
 clean:
-	rm -f ${OBJECTS_MANDATORY} ${OBJECTS_BONUS}
+	rm -rf $(OBJECTS_MANDATORY) $(OBJECTS_BONUS)
 
 fclean: clean
-	rm -f ${NAME}
+	rm -rf $(NAME)
 
-.PHONY: all bonus clean fclean re
+re: fclean all

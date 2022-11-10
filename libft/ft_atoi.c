@@ -9,6 +9,7 @@
 /*   Updated: 2022/11/07 11:43:02 by fvalli-v         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "libft.h"
 
 static int	ft_isspace(const char *str, int *i)
 {
